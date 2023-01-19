@@ -1,5 +1,6 @@
 package repository;
 
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,7 +8,7 @@ public class MessageRepository {
 	
 	private List<String> list=Arrays.asList("Hello", "Hi","Bye");
 	
-	public List<String> getMessages(){
+	public List<String> getMessages() throws SQLException{
 		return list;
 	}
 	
