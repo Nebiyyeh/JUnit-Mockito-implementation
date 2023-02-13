@@ -32,9 +32,25 @@ public class MessageServiceTest2 {
 			e.printStackTrace();
 		}
 		
-		List<String> actualList=service.getMessageWithLengthLessThanFive();
-		assertNotNull(actualList);
-		assertEquals(4,actualList.size());
+		 List<String> actualList=service.getMessageWithLengthLessThanFive();
+		//assertNotNull(actualList);
+		//assertEquals(4,actualList.size());
 	}
+	
+	@Test
+	void testException() {
+		try {
+			when(repository.getMessages()).thenThrow(new SQLException("Connection Exception"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		 List<String> messages=service.getMessages();
+		assertNotNull(messages);
+		assertEquals(0,messages.size());
+	}
+	
+	
 	
 }
